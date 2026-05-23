@@ -1,0 +1,20 @@
+# Secrets — never commit
+.env
+.env.local
+*.env.local
+
+# Downloaded binary (per-machine, per-arch)
+bin/
+
+# Generated configs (after install.sh runs)
+.mcp.json
+.cursor/mcp.json
+.vscode/mcp.json
+.codex/config.toml
+.antigravity/mcp_config.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/

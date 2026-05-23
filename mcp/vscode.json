@@ -1,0 +1,25 @@
+{
+  "servers": {
+    "github": {
+      "type": "stdio",
+      "command": "${REPO_ROOT}/bin/github-mcp-server",
+      "args": ["stdio"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "atlassian": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-atlassian"],
+      "env": {
+        "JIRA_URL": "${env:JIRA_URL}",
+        "JIRA_USERNAME": "${env:JIRA_USERNAME}",
+        "JIRA_API_TOKEN": "${env:JIRA_API_TOKEN}",
+        "CONFLUENCE_URL": "${env:CONFLUENCE_URL}",
+        "CONFLUENCE_USERNAME": "${env:CONFLUENCE_USERNAME}",
+        "CONFLUENCE_API_TOKEN": "${env:CONFLUENCE_API_TOKEN}"
+      }
+    }
+  }
+}
