@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# orch — one-command installer (native runtime, no containers)
+# dotai — one-command installer (native runtime, no containers)
 #
 # What it does:
 #   1. Checks your .env is filled in.
@@ -55,7 +55,7 @@ if [[ ! -f "$REPO_ROOT/.env" ]]; then
     say  "    cp .env.example .env && \$EDITOR .env"
     exit 1
   else
-    err ".env and .env.example both missing — is this the orch repo root?"
+    err ".env and .env.example both missing — is this the dotai repo root?"
     exit 1
   fi
 fi
@@ -252,9 +252,9 @@ if want_tool cursor && (command -v cursor >/dev/null 2>&1 || [[ -d "$HOME/.curso
   ok "Cursor detected"
   render "$REPO_ROOT/mcp/cursor.json" "$REPO_ROOT/.cursor/mcp.json"
   mkdir -p "$REPO_ROOT/.cursor/rules"
-  cat > "$REPO_ROOT/.cursor/rules/orch-skills.mdc" <<'MDC'
+  cat > "$REPO_ROOT/.cursor/rules/dotai-skills.mdc" <<'MDC'
 ---
-description: orch — story verification, PR review, Confluence drafting, test plans
+description: dotai — story verification, PR review, Confluence drafting, test plans
 alwaysApply: false
 ---
 This project ships four skills in the `skills/` folder. When the user asks to
@@ -262,7 +262,7 @@ verify a story, review a PR against a story, draft Confluence docs, or build a
 test plan, read the matching `skills/<name>/SKILL.md` and follow its steps. Use
 the `github` and `atlassian` MCP servers configured in `.cursor/mcp.json`.
 MDC
-  ok "wrote .cursor/rules/orch-skills.mdc"
+  ok "wrote .cursor/rules/dotai-skills.mdc"
 fi
 
 # VS Code
@@ -271,7 +271,7 @@ if want_tool vscode && (command -v code >/dev/null 2>&1 || [[ -d "$HOME/Library/
   render "$REPO_ROOT/mcp/vscode.json" "$REPO_ROOT/.vscode/mcp.json"
   mkdir -p "$REPO_ROOT/.github"
   cat > "$REPO_ROOT/.github/copilot-instructions.md" <<'MD'
-# Copilot custom instructions — orch
+# Copilot custom instructions — dotai
 
 This repo wires up two MCP servers in `.vscode/mcp.json`: `github` and
 `atlassian`. It also ships four skills in `skills/`:
@@ -293,7 +293,7 @@ if want_tool codex && (command -v codex >/dev/null 2>&1 || [[ -d "$HOME/.codex" 
   ok "Codex CLI detected"
   render "$REPO_ROOT/mcp/codex.toml" "$REPO_ROOT/.codex/config.toml"
   cat > "$REPO_ROOT/AGENTS.md" <<'MD'
-# Agent instructions — orch
+# Agent instructions — dotai
 
 This repo configures two MCP servers (`github`, `atlassian`) via
 `.codex/config.toml`. It ships four skills in `skills/`:
@@ -316,7 +316,7 @@ if want_tool antigravity && (command -v antigravity >/dev/null 2>&1 || [[ -d "$H
   render "$REPO_ROOT/mcp/antigravity.json" "$REPO_ROOT/.antigravity/mcp_config.json"
   mkdir -p "$REPO_ROOT/.antigravity"
   cat > "$REPO_ROOT/.antigravity/rules.md" <<'MD'
-# Antigravity rules — orch
+# Antigravity rules — dotai
 
 MCP servers configured in `.antigravity/mcp_config.json`: `github`, `atlassian`.
 Skills live in `skills/`. When the user's request maps to one of:

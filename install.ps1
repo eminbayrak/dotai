@@ -1,7 +1,7 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    orch — Windows installer (PowerShell). Native runtime, no containers.
+    dotai — Windows installer (PowerShell). Native runtime, no containers.
 
 .DESCRIPTION
     Downloads the github-mcp-server.exe binary, verifies uv (uvx),
@@ -57,7 +57,7 @@ if (-not (Test-Path $EnvFile)) {
         Say  "    Copy-Item .env.example .env ; notepad .env"
         exit 1
     } else {
-        Err ".env and .env.example both missing — is this the orch repo root?"
+        Err ".env and .env.example both missing — is this the dotai repo root?"
         exit 1
     }
 }
@@ -112,7 +112,7 @@ if (Test-Path $BinPath) {
         $AssetUrl = "https://github.com/github/github-mcp-server/releases/download/$GhMcpVersion/github-mcp-server_${stripped}_Windows_${Arch}.zip"
     }
     Say "  downloading $AssetUrl"
-    $Tmp = Join-Path $env:TEMP "orch-gh-mcp-$([Guid]::NewGuid().ToString('N'))"
+    $Tmp = Join-Path $env:TEMP "dotai-gh-mcp-$([Guid]::NewGuid().ToString('N'))"
     New-Item -ItemType Directory -Force -Path $Tmp | Out-Null
     $ZipPath = Join-Path $Tmp 'gh-mcp.zip'
     try {
@@ -235,15 +235,15 @@ if ((Want-Tool 'cursor') -and ((Get-Command cursor -ErrorAction SilentlyContinue
     New-Item -ItemType Directory -Force -Path $rulesDir | Out-Null
     @'
 ---
-description: orch — story verification, PR review, Confluence drafting, test plans
+description: dotai — story verification, PR review, Confluence drafting, test plans
 alwaysApply: false
 ---
 This project ships four skills in the `skills/` folder. When the user asks to
 verify a story, review a PR against a story, draft Confluence docs, or build a
 test plan, read the matching `skills/<name>/SKILL.md` and follow its steps. Use
 the `github` and `atlassian` MCP servers configured in `.cursor/mcp.json`.
-'@ | Set-Content -Path (Join-Path $rulesDir 'orch-skills.mdc') -Encoding UTF8
-    Ok "wrote .cursor\rules\orch-skills.mdc"
+'@ | Set-Content -Path (Join-Path $rulesDir 'dotai-skills.mdc') -Encoding UTF8
+    Ok "wrote .cursor\rules\dotai-skills.mdc"
 }
 
 # VS Code
@@ -254,7 +254,7 @@ if ((Want-Tool 'vscode') -and ((Get-Command code -ErrorAction SilentlyContinue) 
     $ghDir = Join-Path $RepoRoot '.github'
     New-Item -ItemType Directory -Force -Path $ghDir | Out-Null
     @'
-# Copilot custom instructions — orch
+# Copilot custom instructions — dotai
 
 This repo wires up two MCP servers in `.vscode/mcp.json`: `github` and
 `atlassian`. It also ships four skills in `skills/`:
@@ -277,7 +277,7 @@ if ((Want-Tool 'codex') -and ((Get-Command codex -ErrorAction SilentlyContinue) 
     Ok "Codex CLI detected"
     Render-Template (Join-Path $RepoRoot 'mcp\codex.toml') (Join-Path $RepoRoot '.codex\config.toml')
     @'
-# Agent instructions — orch
+# Agent instructions — dotai
 
 This repo configures two MCP servers (`github`, `atlassian`) via
 `.codex/config.toml`. It ships four skills in `skills/`:
@@ -303,7 +303,7 @@ if ((Want-Tool 'antigravity') -and ((Get-Command antigravity -ErrorAction Silent
     $agDir = Join-Path $RepoRoot '.antigravity'
     New-Item -ItemType Directory -Force -Path $agDir | Out-Null
     @'
-# Antigravity rules — orch
+# Antigravity rules — dotai
 
 MCP servers configured in `.antigravity/mcp_config.json`: `github`, `atlassian`.
 Skills live in `skills/`. When the user's request maps to one of:

@@ -14,7 +14,7 @@ The skill files are plain Markdown. They describe **when to use the skill** and 
 ## How `install.sh` exposes these to each tool
 
 - **Claude Code / Cowork**: copies the skill folders into `~/.claude/skills/` so they're auto-discovered.
-- **Cursor**: writes a `.cursor/rules/orch-skills.mdc` file that links to the skill folder.
+- **Cursor**: writes a `.cursor/rules/dotai-skills.mdc` file that links to the skill folder.
 - **VS Code Copilot**: writes a `.github/copilot-instructions.md` that references the skill folder.
 - **Codex CLI**: writes an `AGENTS.md` at the repo root.
 - **Antigravity**: writes `.antigravity/rules.md`.

@@ -1,4 +1,4 @@
-# orch
+# dotai
 
 A portable connector pack that hooks any AI coding tool — Claude Code, Cursor, VS Code (Copilot / Continue), Codex CLI, Google Antigravity, Windsurf — into **GitHub**, **Jira**, and **Confluence**. Plus four pre-built skills for the workflows you actually do day to day.
 
@@ -30,7 +30,7 @@ Both auto-detect which AI tools you have, download the GitHub binary, verify `uv
 ## Repo layout
 
 ```
-orch/
+dotai/
 ├── README.md                   # you are here
 ├── .env.example                # tokens to fill in
 ├── install.sh                  # one-command setup
@@ -67,16 +67,16 @@ The GitHub MCP server binary is downloaded automatically by the installer. No se
 
 macOS / Linux:
 ```bash
-git clone <this repo> orch
-cd orch
+git clone <this repo> dotai
+cd dotai
 cp .env.example .env
 $EDITOR .env          # paste your tokens
 ```
 
 Windows (PowerShell):
 ```powershell
-git clone <this repo> orch
-cd orch
+git clone <this repo> dotai
+cd dotai
 Copy-Item .env.example .env
 notepad .env          # paste your tokens
 ```
@@ -134,7 +134,7 @@ The tool will load the matching skill and use the `github` / `atlassian` MCP ser
 | Tool | MCP config | Skills exposed via |
 |------|-----------|--------------------|
 | Claude Code | `.mcp.json` | symlinks in `~/.claude/skills/` |
-| Cursor | `.cursor/mcp.json` | `.cursor/rules/orch-skills.mdc` |
+| Cursor | `.cursor/mcp.json` | `.cursor/rules/dotai-skills.mdc` |
 | VS Code (Copilot) | `.vscode/mcp.json` | `.github/copilot-instructions.md` |
 | Codex CLI | `.codex/config.toml` | `AGENTS.md` at repo root |
 | Antigravity | `.antigravity/mcp_config.json` | `.antigravity/rules.md` |
